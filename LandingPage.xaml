@@ -1,0 +1,98 @@
+﻿<Page x:Class="EnrollmentDesktopApp.Pages.LandingPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:EnrollmentDesktopApp.Pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="1150" d:DesignWidth="800"
+    xmlns:iconPacks="clr-namespace:MahApps.Metro.IconPacks;assembly=MahApps.Metro.IconPacks.FontAwesome"
+
+    xmlns:FontAwesome="clr-namespace:MahApps.Metro.IconPacks;assembly=MahApps.Metro.IconPacks.FontAwesome"
+      Title="LandingPage">
+
+    <Grid>
+        <Border CornerRadius="25" Padding="20" Background="Transparent" Height="950" VerticalAlignment="Center">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"></RowDefinition>
+                    <!-- For the logo -->
+                    <RowDefinition Height="*"></RowDefinition>
+                    <RowDefinition Height="Auto"></RowDefinition>
+                    <!-- For the sign-in block -->
+                </Grid.RowDefinitions>
+                <Grid Grid.Row="0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"></ColumnDefinition>
+                        <ColumnDefinition Width="*"></ColumnDefinition>
+                        <ColumnDefinition Width="Auto"></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <StackPanel Grid.Column="0" Orientation="Vertical" Margin="100 0 0 0">
+                        <Image Source="/Images/NEOMlogo.png" Width="85"/>
+                        <TextBlock Text="NEOM"
+                                   FontSize="20" FontStyle="Normal"
+                                   Foreground="Black"
+                                       Margin="0,5,0,0" 
+                                       HorizontalAlignment="Center" 
+                                       FontWeight="Bold"/> 
+                        </StackPanel>
+
+                    <TextBlock Grid.Column="1" Text="Digital ID" Foreground="#004D6D" HorizontalAlignment="Center" FontSize="35" Margin="-80,50,0,0"/>
+                    <Button Grid.Column="2" Width="50" Height="50" Background="#004D6D" Click="Start_Enrollment" BorderBrush="Transparent" Margin="0 0 40 0" >
+                        <Button.Template>
+                            <ControlTemplate TargetType="Button">
+                                <Border x:Name="border" Background="{TemplateBinding Background}"
+                    BorderBrush="{TemplateBinding BorderBrush}"
+                    BorderThickness="2"
+                    CornerRadius="10">
+                                    <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                </Border>
+                                <ControlTemplate.Triggers>
+                                    <Trigger Property="IsMouseOver" Value="true">
+                                        <!-- Change properties on mouse over -->
+                                        <Setter TargetName="border" Property="Background" Value="#339685"/>
+                                        <!-- Or any color of your choosing -->
+                                        <!-- You can also change other properties like BorderBrush, etc. -->
+                                    </Trigger>
+                                </ControlTemplate.Triggers>
+                            </ControlTemplate>
+                        </Button.Template>
+                        <iconPacks:PackIconFontAwesome Width="35" Height="35" Kind="PlusSolid" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="White"/>
+                    </Button>
+
+                </Grid>
+
+                <Grid Grid.Row="1" Background="Transparent">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"></RowDefinition>
+                        <RowDefinition Height="*"></RowDefinition>
+                    </Grid.RowDefinitions>
+                    <TextBlock Grid.Row="0" Text="Recent Transactions - Enrollment" Foreground="Black" HorizontalAlignment="Center" FontSize="25" Margin="0,20,0,0"/>
+                    <DataGrid Background="Transparent" BorderThickness="0" HorizontalAlignment="Center"  MinWidth="100"
+          HorizontalContentAlignment="Center"  Grid.Row="1"  x:Name="membersDataGrid" Margin="150 20 150 0"  
+                            CellStyle="{StaticResource CustomDataGridCellStyle}"
+
+                            ItemsSource="{Binding members}" 
+                            RowStyle="{StaticResource DataGridRowStyle}"
+                            ColumnHeaderStyle="{StaticResource DataGridColumnHeaderStyle}" 
+                            AutoGenerateColumns="True" 
+                            IsReadOnly="True">
+
+                    </DataGrid>
+
+
+
+                </Grid>
+
+
+                <Grid Grid.Row="2">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"></ColumnDefinition>
+                        <ColumnDefinition Width="*"></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <Button Content="Home" Margin="0 20 0 0" Height="50" Width="80" Style="{StaticResource mainButton}" />
+                </Grid>
+            </Grid>
+        </Border>
+    </Grid>
+</Page>
